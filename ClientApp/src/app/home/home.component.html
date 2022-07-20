@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <h1>Records</h1>
+</mat-toolbar>
+
+<div class="card-container">
+  <mat-card *ngFor="let record of records" class="mat-elevation-z4">
+    {{ record.name }}
+    By {{ record.artist.name }}
+  </mat-card>
+</div>
