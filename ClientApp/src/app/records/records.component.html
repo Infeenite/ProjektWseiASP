@@ -1,0 +1,26 @@
+<mat-progress-bar
+  *ngIf="isLoading; else loadedContent"
+  mode="indeterminate"
+  color="accent"
+></mat-progress-bar>
+
+<ng-template #loadedContent>
+  <section>
+    <h1>Records</h1>
+    <div class="card-container">
+      <mat-card *ngFor="let record of records" class="mat-elevation-z4">
+        <mat-card-title
+          >{{ record.name }} ({{ record.releaseYear }})</mat-card-title
+        >
+        <mat-card-subtitle>By {{ record.artist }}</mat-card-subtitle>
+        <img mat-card-image [src]="record.imageUrl" />
+        <span>serial no: {{ record.serialNumber }}</span>
+        <h4>Most popular tracks:</h4>
+        <div *ngFor="let track of record.tracks">
+          {{ track.trackNo }}. {{ track.name }}
+        </div>
+        <div>... and more</div>
+      </mat-card>
+    </div>
+  </section>
+</ng-template>

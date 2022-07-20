@@ -1,11 +1,9 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using oop.Artists;
 using oop.enums;
-using oop.Tracks;
 
-namespace oop.Records
+namespace oop.Models
 {
     [Table("Records")]
   public class Record {
@@ -22,5 +20,19 @@ namespace oop.Records
     public int ArtistId { get; set; }
 
     public Artist Artist {get; set;}
+
+    public Genre Genre { get; set; }
+
+    public string ImageUrl { get; set; }
+
+    [StringLength(4)]
+    public string ReleaseYear { get; set; }
+
+    public List<Track> Tracks { get; set; }
+
+    public Record()
+    {
+      Tracks = new List<Track>();
+    }
   }
 }

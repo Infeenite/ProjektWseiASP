@@ -1,0 +1,14 @@
+.card-container {
+  display: flex;
+
+  .mat-card {
+    margin: 12px;
+    width: 100%;
+    max-width: 480px;
+    padding: 24px;
+  }
+}
+
+section {
+  padding: 32px;
+}

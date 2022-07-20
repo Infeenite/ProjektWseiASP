@@ -21,7 +21,7 @@ namespace oop.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("oop.Artists.Artist", b =>
+            modelBuilder.Entity("oop.Models.Artist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,10 +43,20 @@ namespace oop.Migrations
                         {
                             Id = 1,
                             Name = "Black Sabbath"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Judas Priest"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Iron Maiden"
                         });
                 });
 
-            modelBuilder.Entity("oop.Records.Record", b =>
+            modelBuilder.Entity("oop.Models.Record", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,10 +67,22 @@ namespace oop.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Genre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(120)
                         .HasColumnType("nvarchar(120)");
+
+                    b.Property<string>("ReleaseYear")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired()
@@ -78,12 +100,35 @@ namespace oop.Migrations
                         {
                             Id = 1,
                             ArtistId = 1,
+                            Genre = 0,
+                            ImageUrl = "https://i.discogs.com/VXXKjs87ESPmntp4jgYGQv-Q16EKJQnBGdX0NF-1vys/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY3NzMz/Ny0xMzMyNzQ4NTk1/LmpwZWc.jpeg",
                             Name = "Heaven and Hell",
+                            ReleaseYear = "1980",
+                            SerialNumber = "9102 752"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArtistId = 3,
+                            Genre = 0,
+                            ImageUrl = "https://i.discogs.com/VyqY8388sgwjGVc25Z6FQbLLgXlmPgyGL7AkYrfgidA/rs:fit/g:sm/q:90/h:600/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4Mzk4/NDItMTU5MDE1MzU5/My02MTc3LmpwZWc.jpeg",
+                            Name = "Piece of Mind",
+                            ReleaseYear = "1983",
+                            SerialNumber = "9102 752"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArtistId = 2,
+                            Genre = 0,
+                            ImageUrl = "https://i.discogs.com/bxSIVqkuJrEplrBi4gkZNJA5hEllnwN-q_r7PYS5T8o/rs:fit/g:sm/q:90/h:599/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3MjMx/Mi0xNTkwMzE5NjY4/LTU2NDkuanBlZw.jpeg",
+                            Name = "Defenders of the Faith",
+                            ReleaseYear = "1984",
                             SerialNumber = "9102 752"
                         });
                 });
 
-            modelBuilder.Entity("oop.Stocks.Stock", b =>
+            modelBuilder.Entity("oop.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,10 +139,15 @@ namespace oop.Migrations
                     b.Property<int>("Condition")
                         .HasColumnType("int");
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.Property<int>("RecordId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RecordId");
 
                     b.ToTable("Stocks");
 
@@ -106,17 +156,19 @@ namespace oop.Migrations
                         {
                             Id = 1,
                             Condition = 110,
+                            Price = 0,
                             RecordId = 1
                         },
                         new
                         {
                             Id = 2,
                             Condition = 101,
+                            Price = 0,
                             RecordId = 1
                         });
                 });
 
-            modelBuilder.Entity("oop.Tracks.Track", b =>
+            modelBuilder.Entity("oop.Models.Track", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,6 +189,8 @@ namespace oop.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RecordId");
+
                     b.ToTable("Tracks");
 
                     b.HasData(
@@ -153,18 +207,71 @@ namespace oop.Migrations
                             Name = "Children of the Sea",
                             RecordId = 1,
                             TrackNo = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Die with your boots on",
+                            RecordId = 2,
+                            TrackNo = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "The Trooper",
+                            RecordId = 2,
+                            TrackNo = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Rock Hard Ride Free",
+                            RecordId = 3,
+                            TrackNo = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "The Sentinel",
+                            RecordId = 3,
+                            TrackNo = 4
                         });
                 });
 
-            modelBuilder.Entity("oop.Records.Record", b =>
+            modelBuilder.Entity("oop.Models.Record", b =>
                 {
-                    b.HasOne("oop.Artists.Artist", "Artist")
+                    b.HasOne("oop.Models.Artist", "Artist")
                         .WithMany()
                         .HasForeignKey("ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("oop.Models.Stock", b =>
+                {
+                    b.HasOne("oop.Models.Record", "Record")
+                        .WithMany()
+                        .HasForeignKey("RecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Record");
+                });
+
+            modelBuilder.Entity("oop.Models.Track", b =>
+                {
+                    b.HasOne("oop.Models.Record", null)
+                        .WithMany("Tracks")
+                        .HasForeignKey("RecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("oop.Models.Record", b =>
+                {
+                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }

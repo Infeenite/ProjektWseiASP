@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using oop.AppDbContext;
-using oop.Records;
+using oop.Models;
 
 namespace oop.Controllers {
 
@@ -17,8 +17,12 @@ public class RecordsController: ControllerBase {
   }
 
   [HttpGet]
-  public async Task<List<Record>> GetRecords() {
-    return await context.Records.Include(c => c.Artist).ToListAsync();
+  public async Task<List<RecordDTO>> GetRecords() {
+    var records = await context.Records.Include(c => c.Artist).Include(c => c.Tracks).ToListAsync();
+    var Dtos = new List<RecordDTO>();
+    records.ForEach(record => Dtos.Add(new RecordDTO(record)));
+
+    return Dtos.ToList();
   }
 }
 

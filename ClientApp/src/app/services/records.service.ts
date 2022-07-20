@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Records } from 'src/app/models/record';
 
 @Injectable()
 export class RecordsService {
@@ -8,8 +10,7 @@ export class RecordsService {
     this.baseUrl = baseUrl;
   }
 
-  getRecords() {
-    console.log(this.baseUrl);
-    return this.http.get('https://localhost:7010/api/records');
+  getRecords(): Observable<Records> {
+    return this.http.get<Records>(this.baseUrl + 'api/records');
   }
 }
