@@ -119,6 +119,26 @@ namespace oop.Mocks {
           RecordId = 1,
           Condition = Condition.Excellent,
           Price = 32
+        },
+
+        new Stock {
+          Id = 3,
+          RecordId = 2,
+          Condition = Condition.Mint,
+          Price = 32
+        },
+
+        new Stock {
+          Id = 4,
+          RecordId = 3,
+          Condition = Condition.NearMint,
+          Price = 32
+        },
+        new Stock {
+          Id = 5,
+          RecordId = 3,
+          Condition = Condition.Fair,
+          Price = 32
         }
       };
     }

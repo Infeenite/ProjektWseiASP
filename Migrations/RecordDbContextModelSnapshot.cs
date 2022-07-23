@@ -139,8 +139,8 @@ namespace oop.Migrations
                     b.Property<int>("Condition")
                         .HasColumnType("int");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("RecordId")
                         .HasColumnType("int");
@@ -155,16 +155,37 @@ namespace oop.Migrations
                         new
                         {
                             Id = 1,
-                            Condition = 110,
-                            Price = 0,
+                            Condition = 1,
+                            Price = 99m,
                             RecordId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Condition = 101,
-                            Price = 0,
+                            Condition = 2,
+                            Price = 32m,
                             RecordId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Condition = 0,
+                            Price = 32m,
+                            RecordId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Condition = 1,
+                            Price = 32m,
+                            RecordId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Condition = 5,
+                            Price = 32m,
+                            RecordId = 3
                         });
                 });
 

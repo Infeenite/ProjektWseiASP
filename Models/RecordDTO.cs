@@ -7,6 +7,8 @@ namespace oop.Models
 {
   public class RecordDTO {
 
+    public int Id { get; set; }
+
     public string SerialNumber { get; set; }
 
     public string Name { get; set; }
@@ -24,6 +26,7 @@ namespace oop.Models
 
     public RecordDTO(Record Record)
     {
+      Id = Record.Id;
       SerialNumber = Record.SerialNumber;
       Name = Record.Name;
       Artist = Record.Artist.Name;

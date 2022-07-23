@@ -12,6 +12,6 @@ namespace oop.Models {
     public Record Record { get; set; }
     public Condition Condition { get; set; }
 
-    public int Price { get; set; }
+    public decimal Price { get; set; }
   }
 }

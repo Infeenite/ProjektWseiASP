@@ -1,10 +1,9 @@
-import { Genre } from 'src/app/models/genre.enum';
-
 export interface Record {
+  id: number;
   artist: string;
   serialNumber: string;
   name: string;
-  genre: Genre;
+  genre: number;
   imageUrl: string;
   releaseYear: string;
   tracks: { name: string; trackNo: number }[];

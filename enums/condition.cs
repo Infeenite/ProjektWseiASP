@@ -3,13 +3,13 @@
 namespace oop.enums {
 
   public enum Condition {
-    Mint = 'm',
-    NearMint = 'n',
-    Excellent = 'e',
+    Mint,
+    NearMint,
+    Excellent,
 
-    VeryGood = 'v',
-    Good = 'g',
-    Fair = 'f',
-    Poor = 'p'
+    VeryGood,
+    Good,
+    Fair,
+    Poor
   }
 }

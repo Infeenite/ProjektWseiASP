@@ -1,0 +1,13 @@
+<section *ngIf="records$ | async as records; else loading">
+  <h1>Records</h1>
+  <div class="card-container">
+    <app-record-card
+      *ngFor="let record of records"
+      [record]="record"
+    ></app-record-card>
+  </div>
+</section>
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+</ng-template>
