@@ -24,6 +24,16 @@ public class StocksController: ControllerBase {
 
     return Dtos;
   }
+
+  [HttpPost]
+  public async Task<ActionResult> PostStocks(StockDTO data) {
+    if (data == null) {
+      return BadRequest();
+    }
+    this.context.Add(data);
+    await this.context.SaveChangesAsync();
+    return Ok();
+  }
 }
 
 }

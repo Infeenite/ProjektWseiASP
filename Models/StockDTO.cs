@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using oop.enums;
 
 namespace oop.Models {
@@ -10,6 +11,9 @@ namespace oop.Models {
     public Condition Condition { get; set; }
 
     public decimal Price { get; set; }
+
+    [JsonConstructor]
+    public StockDTO(){}
 
     public StockDTO(Stock Stock)
     {

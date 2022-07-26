@@ -6,4 +6,10 @@ export interface StockItem {
   price: number;
 }
 
+export interface StockItemRequest {
+  recordId: number;
+  condition: number;
+  price: number;
+}
+
 export type StockItems = StockItem[];
