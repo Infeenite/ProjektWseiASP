@@ -1,10 +1,15 @@
-:host {
-  margin: 36px;
-}
-
 mat-form-field {
   display: block;
   margin: 24px;
   width: auto;
   max-width: 240px;
+}
+
+section {
+  padding: 32px;
+}
+
+.mat-card {
+  max-width: 480px;
+  margin-top: 16px;
 }

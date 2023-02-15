@@ -1,6 +1,27 @@
-<mat-toolbar color="primary">
-  RecordDb
-  <button mat-button routerLink="/records">Records</button>
-  <button mat-button routerLink="/marketplace">Marketplace</button>
-</mat-toolbar>
+<ng-container *ngIf="{ isAuthenticated: isAuthenticated$ | async } as state">
+    <mat-toolbar  color="primary" class="mat-elevation-z4">
+      RecordDb
+
+      <mat-progress-spinner diameter="32" color="accent" mode="indeterminate" *ngIf="state.isAuthenticated === null; else loaded"></mat-progress-spinner>
+      <ng-template #loaded>
+        <button *ngIf="state.isAuthenticated" mat-button routerLink="/records">Records</button>
+        <button mat-button routerLink="/marketplace">Marketplace</button>
+        <div class="navbar-flex"></div>
+
+        <!-- Not logged in -->
+        <ng-container *ngIf="!state.isAuthenticated; else helloMessage">
+          <button mat-flat-button color="accent" (click)="login()">Login</button>
+        </ng-container>
+
+        <!-- Logged in -->
+        <ng-template #helloMessage>
+          <ng-container *ngIf="user$ | async as user">
+            <span class="welcome-text">Hello, {{ user.name }}!</span>
+            <button class="logout" mat-flat-button color="accent" (click)="logout()">Logout</button>
+          </ng-container>
+        </ng-template>
+      </ng-template>
+
+    </mat-toolbar>
+</ng-container>
 <router-outlet></router-outlet>

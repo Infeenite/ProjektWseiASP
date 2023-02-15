@@ -1,11 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { delay, Observable } from 'rxjs';
-import { Genres } from 'src/app/models/genres';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { NewRecordComponent } from 'src/app/components/new-record/new-record.component';
 import { Records } from 'src/app/models/record';
 import { RecordsService } from 'src/app/services/records.service';
 
@@ -18,10 +14,16 @@ import { RecordsService } from 'src/app/services/records.service';
 export class RecordsComponent implements OnInit {
   records$!: Observable<Records>;
 
-  constructor(private recordsService: RecordsService) {}
+  constructor(
+    private recordsService: RecordsService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    // I want to show off the cool loading bar so I delayed it by 1 second
-    this.records$ = this.recordsService.getRecords().pipe(delay(1000));
+    this.records$ = this.recordsService.getRecords();
+  }
+
+  openNewRecordDialog(): void {
+    this.dialog.open(NewRecordComponent).beforeClosed().subscribe();
   }
 }

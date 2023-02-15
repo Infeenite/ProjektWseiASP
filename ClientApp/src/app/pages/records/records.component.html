@@ -1,5 +1,6 @@
 <section *ngIf="records$ | async as records; else loading">
   <h1>Records</h1>
+  <button mat-button mat-raised-button color="accent" (click)="openNewRecordDialog()">Add new record entry</button>
   <div class="card-container">
     <app-record-card
       *ngFor="let record of records"

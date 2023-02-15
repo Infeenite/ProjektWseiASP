@@ -1,27 +1,40 @@
-<h1>Add New Item</h1>
+<section>
+  <h1>Add new record to the marketplace</h1>
 
-<mat-form-field>
-  <mat-label>Record</mat-label>
-  <mat-select [(ngModel)]="request.recordId">
-    <mat-option *ngFor="let record of records$ | async" [value]="record.id"
-      >{{ record.name }} | {{ record.artist }}</mat-option
-    >
-  </mat-select>
-</mat-form-field>
+  <mat-card>
+    <form [formGroup]="recordForm" (ngSubmit)="submit()">
+      <mat-form-field>
+        <mat-label>Record</mat-label>
+        <mat-select formControlName="recordId" required>
+          <mat-option *ngFor="let record of records$ | async" [value]="record.id"
+            >{{ record.name }} | {{ record.artist }}</mat-option
+          >
+        </mat-select>
+        <mat-error>Record field is required</mat-error>
+      </mat-form-field>
 
-<mat-form-field>
-  <mat-select placeholder="Condition" [(ngModel)]="request.condition">
-    <mat-option
-      *ngFor="let condition of conditions; let i = index"
-      [value]="i"
-      >{{ condition }}</mat-option
-    >
-  </mat-select>
-</mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Condition" formControlName="condition" required>
+          <mat-option
+            *ngFor="let condition of conditions; let i = index"
+            [value]="i"
+            >{{ condition }}</mat-option
+          >
+        </mat-select>
+        <mat-error>Condition field is required</mat-error>
+      </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Price</mat-label>
-  <input [(ngModel)]="request.price" matInput type="number" name="price" />
-</mat-form-field>
+      <mat-form-field>
+        <mat-label>Price (USD)</mat-label>
+        <input formControlName="price" matInput type="number" name="price" required max="10000"/>
+        <mat-error  *ngIf="recordForm.controls.price.hasError('required')">Price field is required</mat-error>
+        <mat-error  *ngIf="recordForm.controls.price.hasError('max')">Maximum price is 10k dollars (nobody would buy a more expensive record!)</mat-error>
+      </mat-form-field>
 
-<button mat-button (click)="submit()">Add</button>
+      <button mat-button>Add</button>
+
+    </form>
+  </mat-card>
+
+</section>
+

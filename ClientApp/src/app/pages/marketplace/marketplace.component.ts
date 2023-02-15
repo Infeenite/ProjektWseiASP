@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
 import { Conditions } from 'src/app/models/conditions';
 import { StockItems } from 'src/app/models/stock-item';
@@ -17,6 +18,8 @@ import { MarketplaceService } from 'src/app/services/marketplace.service';
 })
 export class MarketplaceComponent implements OnInit {
   stockItems$!: Observable<StockItems>;
+
+  isLoggedIn$: Observable<boolean> = this.auth.isAuthenticated$;
   readonly conditions = Conditions;
   readonly displayedColumns: string[] = [
     'image',
@@ -26,7 +29,10 @@ export class MarketplaceComponent implements OnInit {
     'price',
   ];
 
-  constructor(private marketplaceService: MarketplaceService) {}
+  constructor(
+    private marketplaceService: MarketplaceService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.stockItems$ = this.marketplaceService.getStockItems();

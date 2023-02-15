@@ -25,7 +25,8 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/platform-server": "^14.2.12",
     "@angular/router": "^14.2.12",
-    "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
+    "@auth0/angular-jwt": "^5.1.2",
+    "@auth0/auth0-angular": "^2.0.1",
     "bootstrap": "^5.1.3",
     "hammerjs": "^2.0.8",
     "jquery": "^3.6.0",
@@ -50,6 +51,5 @@
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "^1.7.0",
     "typescript": "~4.6.3"
-  },
-  "optionalDependencies": {}
+  }
 }

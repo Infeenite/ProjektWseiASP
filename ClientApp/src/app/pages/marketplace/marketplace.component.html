@@ -1,7 +1,7 @@
 <section *ngIf="stockItems$ | async as stockItems; else loading">
   <header>
     <h1>Marketplace</h1>
-    <button mat-raised-button color="accent" routerLink="/marketplace/new">
+    <button *ngIf="isLoggedIn$ | async" mat-raised-button color="accent" routerLink="/marketplace/new">
       Add item
     </button>
   </header>
