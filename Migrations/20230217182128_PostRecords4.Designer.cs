@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using oop.AppDbContext;
 
@@ -10,9 +11,10 @@ using oop.AppDbContext;
 namespace oop.Migrations
 {
     [DbContext(typeof(RecordDbContext))]
-    partial class RecordDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230217182128_PostRecords4")]
+    partial class PostRecords4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,7 +170,7 @@ namespace oop.Migrations
                         },
                         new
                         {
-                            Id = 112,
+                            Id = 4,
                             ArtistId = 5,
                             Genre = 1,
                             GenreId = 0,
@@ -179,7 +181,7 @@ namespace oop.Migrations
                         },
                         new
                         {
-                            Id = 113,
+                            Id = 5,
                             ArtistId = 10,
                             Genre = 1,
                             GenreId = 0,
@@ -190,7 +192,7 @@ namespace oop.Migrations
                         },
                         new
                         {
-                            Id = 115,
+                            Id = 6,
                             ArtistId = 7,
                             Genre = 2,
                             GenreId = 0,

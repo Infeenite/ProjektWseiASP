@@ -4,13 +4,8 @@
   </mat-card-title>
 
   <mat-card-subtitle>By {{ record.artist }}</mat-card-subtitle>
-  <mat-card-subtitle>{{ genres[record.genre] }}</mat-card-subtitle>
+  <mat-card-subtitle>{{ genres[record.genre] || 'Unknown' }}</mat-card-subtitle>
 
-  <img mat-card-image [src]="record.imageUrl" />
+  <img mat-card-image [src]="record.imageUrl || placeholderUrl" />
   <span>serial no: {{ record.serialNumber }}</span>
-  <h4>Most popular tracks:</h4>
-  <div *ngFor="let track of record.tracks">
-    {{ track.trackNo }}. {{ track.name }}
-  </div>
-  <div>... and more</div>
 </mat-card>

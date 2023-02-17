@@ -1,14 +1,19 @@
-<section *ngIf="records$ | async as records; else loading">
+<section *ngIf="records; else loading">
+
+  <div class="container-fluid">
   <h1>Records</h1>
   <button mat-button mat-raised-button color="accent" (click)="openNewRecordDialog()">Add new record entry</button>
-  <div class="card-container">
-    <app-record-card
-      *ngFor="let record of records"
-      [record]="record"
-    ></app-record-card>
+    <div class="row">
+      <div *ngFor="let record of records" class="col-md-3">
+        <app-record-card
+        [record]="record"
+      ></app-record-card>
+      </div>
+    </div>
   </div>
 </section>
 
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
 </ng-template>
+{{ records }}

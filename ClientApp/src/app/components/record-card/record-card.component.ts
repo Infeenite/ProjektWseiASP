@@ -10,6 +10,8 @@ import { Record } from 'src/app/models/record';
 })
 export class RecordCardomponent {
   readonly genres = Genres;
+  protected readonly placeholderUrl =
+    'https://img.redro.pl/fototapety/12-inch-vinyl-record-with-blank-label-isolated-700-231396737.jpg';
 
   @Input()
   record!: Record;

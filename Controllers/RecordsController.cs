@@ -30,6 +30,20 @@ namespace oop.Controllers
 
             return Dtos.ToList();
         }
+
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> PostRecords(Record data)
+        {
+            if (data == null || !ModelState.IsValid)
+            {
+                return Problem(statusCode: 400, title: "Invalid form");
+            }
+            this.context.Add(data);
+            await this.context.SaveChangesAsync();
+            return Ok(data);
+        }
     }
 
 }

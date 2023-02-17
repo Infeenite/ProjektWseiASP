@@ -1,0 +1,21 @@
+section {
+  min-width: 640px;
+}
+
+.mat-form-field {
+  display: block;
+  max-width: 210px;
+
+  &:first-child {
+    margin-top: 32px;
+  }
+}
+
+.info {
+  display: block;
+  color: #e91e63;
+}
+
+button {
+  margin-top: 24px;
+}

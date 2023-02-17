@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using oop.AppDbContext;
 
@@ -10,9 +11,10 @@ using oop.AppDbContext;
 namespace oop.Migrations
 {
     [DbContext(typeof(RecordDbContext))]
-    partial class RecordDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230217182343_PostRecords6")]
+    partial class PostRecords6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

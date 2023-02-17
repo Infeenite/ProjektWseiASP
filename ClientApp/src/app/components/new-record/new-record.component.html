@@ -1,1 +1,44 @@
-<h1>New record entry</h1>
+<section>
+  <h6>Create new record entry</h6>
+
+  <form [formGroup]="recordForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Artist</mat-label>
+      <mat-select required formControlName="artistId">
+        <mat-option *ngFor="let artist of artists$ | async" [value]="artist.id">{{ artist.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Serial No.</mat-label>
+      <input matInput formControlName="serialNumber" name="serialNumber" maxlength="12" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" maxlength="32"  name="title" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Year</mat-label>
+      <input matInput formControlName="releaseYear" required name="year" maxlength="4">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Genre</mat-label>
+      <mat-select required formControlName="genreId">
+        <mat-option *ngFor="let genre of genres; let i = index" [value]="i">{{ genre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <span class="info">
+      Adding album covers is not supported in this version of the application
+    </span>
+
+  <button mat-raised-button color="primary">
+    Submit
+  </button>
+  </form>
+
+
+</section>

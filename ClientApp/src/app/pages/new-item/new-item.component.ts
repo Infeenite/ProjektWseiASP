@@ -15,7 +15,7 @@ import { RecordsService } from 'src/app/services/records.service';
   styleUrls: ['./new-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NewItemComponent implements OnInit {
+export class NewItemComponent {
   constructor(
     private recordsService: RecordsService,
     private marketplaceService: MarketplaceService,
@@ -23,7 +23,7 @@ export class NewItemComponent implements OnInit {
     private router: Router
   ) {}
   readonly conditions = Conditions;
-  records$!: Observable<Records>;
+  records$: Observable<Records> = this.recordsService.getRecords();
 
   protected serverError: string | null = null;
 
@@ -33,17 +33,13 @@ export class NewItemComponent implements OnInit {
     price: new FormControl<number | null>(null),
   });
 
-  ngOnInit() {
-    this.records$ = this.recordsService.getRecords();
-  }
-
   submit(): void {
     if (this.recordForm.valid) {
       this.marketplaceService
         .addStockItem(this.recordForm.value as StockItemRequest)
         .pipe(
           catchError(({ error }) => {
-            this.snackBar.open(error.title);
+            this.snackBar.open(error.title || 'Unknown error has occured');
             return EMPTY;
           })
         )

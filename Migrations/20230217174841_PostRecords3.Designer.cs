@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using oop.AppDbContext;
 
@@ -10,9 +11,10 @@ using oop.AppDbContext;
 namespace oop.Migrations
 {
     [DbContext(typeof(RecordDbContext))]
-    partial class RecordDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230217174841_PostRecords3")]
+    partial class PostRecords3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,41 +55,6 @@ namespace oop.Migrations
                         {
                             Id = 3,
                             Name = "Iron Maiden"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "The Beatles"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Pink Floyd"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Motorhead"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Michael Jackson"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "The Rolling Stones"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Deep Purple"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Rainbow"
                         });
                 });
 
@@ -165,39 +132,6 @@ namespace oop.Migrations
                             Name = "Defenders of the Faith",
                             ReleaseYear = "1984",
                             SerialNumber = "9102 752"
-                        },
-                        new
-                        {
-                            Id = 112,
-                            ArtistId = 5,
-                            Genre = 1,
-                            GenreId = 0,
-                            ImageUrl = "https://i.discogs.com/9TFRqx1yW7EkC71l42QR2UEjnSWzcXT5TGDsfWxT4xE/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4NzMw/MTMtMTY2NzIwODk0/MC01NTc3LmpwZWc.jpeg",
-                            Name = "Dark Side of the Moon",
-                            ReleaseYear = "1973",
-                            SerialNumber = "91 7"
-                        },
-                        new
-                        {
-                            Id = 113,
-                            ArtistId = 10,
-                            Genre = 1,
-                            GenreId = 0,
-                            ImageUrl = "https://i.discogs.com/rNwD19S4NSiDrD6lTyzZYatIQ-YJ9hy0m4MGqqqtD94/rs:fit/g:sm/q:90/h:498/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ0ODM3/NDktMTM2NjE4Mjg4/NS0xMjA2LmpwZWc.jpeg",
-                            Name = "Rising",
-                            ReleaseYear = "1976",
-                            SerialNumber = "9111 7"
-                        },
-                        new
-                        {
-                            Id = 115,
-                            ArtistId = 7,
-                            Genre = 2,
-                            GenreId = 0,
-                            ImageUrl = "https://i.discogs.com/dWe2AyguSxJpaaEWbK_mVLL3zs2ejuta0sJCx5BvS8o/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MTEy/OTMtMTU5NDI0NTgx/Mi03OTMxLmpwZWc.jpeg",
-                            Name = "Thriller",
-                            ReleaseYear = "1982",
-                            SerialNumber = "92111 7"
                         });
                 });
 

@@ -1,6 +1,6 @@
 <ng-container *ngIf="{ isAuthenticated: isAuthenticated$ | async } as state">
     <mat-toolbar  color="primary" class="mat-elevation-z4">
-      RecordDb
+      <button mat-button routerLink="/">RecordDb</button>
 
       <mat-progress-spinner diameter="32" color="accent" mode="indeterminate" *ngIf="state.isAuthenticated === null; else loaded"></mat-progress-spinner>
       <ng-template #loaded>

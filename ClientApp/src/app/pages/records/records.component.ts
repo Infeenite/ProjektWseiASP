@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { NewRecordComponent } from 'src/app/components/new-record/new-record.component';
@@ -12,18 +17,30 @@ import { RecordsService } from 'src/app/services/records.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecordsComponent implements OnInit {
-  records$!: Observable<Records>;
+  protected records!: Records;
 
   constructor(
     private recordsService: RecordsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private changeDet: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.records$ = this.recordsService.getRecords();
+    this.reload();
   }
 
   openNewRecordDialog(): void {
-    this.dialog.open(NewRecordComponent).beforeClosed().subscribe();
+    this.dialog
+      .open(NewRecordComponent)
+      .beforeClosed()
+      .subscribe(() => this.reload());
+  }
+
+  private reload(): void {
+    this.recordsService.getRecords().subscribe((records) => {
+      this.records = records;
+      console.log(this.records);
+      this.changeDet.markForCheck();
+    });
   }
 }

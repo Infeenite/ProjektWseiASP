@@ -69,13 +69,21 @@ import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
       httpInterceptor: {
         allowedList: [
           {
-            // Match any request that starts 'https://dev-ii87cwbmy7f2mchv.us.auth0.com/api/v2/' (note the asterisk)
             uri: 'https://localhost:7010/api/records',
             tokenOptions: {
               authorizationParams: {
                 // The attached token should target this audience
                 audience: 'https://api.wsei-asp-project.com',
-                scope: 'read:records',
+              },
+            },
+          },
+
+          {
+            uri: 'https://localhost:7010/api/stocks',
+            tokenOptions: {
+              authorizationParams: {
+                // The attached token should target this audience
+                audience: 'https://api.wsei-asp-project.com',
               },
             },
           },
